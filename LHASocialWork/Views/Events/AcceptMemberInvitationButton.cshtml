@@ -1,0 +1,12 @@
+﻿@inherits System.Web.Mvc.WebViewPage<string>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+
+<div class='button' style='height: 15px; margin: 10px 7px 0px 0px; float: left;'>
+    @using (Html.BeginForm(new { action = "acceptmemberinvitation", controller = "events", eventName = Model }))
+    {
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Accept Invitation" />
+    }
+</div>       

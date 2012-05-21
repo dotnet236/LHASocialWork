@@ -1,0 +1,28 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventProgramsModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using LHASocialWork.Core.Extensions;
+@using LHASocialWork.Core;
+
+@{
+    View.Title = Bootstrapper.SiteTitle + " - Programs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section leftNav{
+    @{Html.RenderPartial("SearchNav");}
+}
+
+<div>
+    <div class='gridContainer'>
+        <div id='gridContents'>
+            @{Html.RenderPartial("SearchResults", Model.SearchResults);}
+        </div>
+    </div>
+</div>
+
+@section script {
+    <script type="text/javascript" src='@Url.Content("~/scripts/jQuery.UI/jquery.ui.accordion.js")'></script>
+}

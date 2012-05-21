@@ -1,0 +1,29 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Templates.ImageFileUpload>
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+
+<div class='imageFileUploadContainer'>
+    <div>
+        @Html.EditorFor(x => x.Image)
+        <input type="hidden" id = "FileChanged" name="FileChanged" value='@Model.FileChanged' />
+        <a href='javascript:' class='imageFileUploadChangeButton'>Change</a>
+    </div>
+    <div style='display:none;' class='imageFileUploadButton'>
+        <br />
+        @{Html.RenderPartial("~/Views/Shared/EditorTemplates/FileUpload.cshtml", Model);}
+         <a href='javascript:' class='imageFileUploadUndoButton'>Cancel</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $(".imageFileUploadChangeButton").click(function () {
+            $(this).parent().hide().next().show();
+            $("#FileChanged").val("True");
+        });
+        $(".imageFileUploadUndoButton").click(function () {
+            $(this).parent().hide().prev().show();
+            $("#FileChanged").val("False");
+        });
+    });
+</script>

@@ -1,0 +1,77 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventRequestedCoordinatorsModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using LHASocialWork.Core.Extensions;
+@using LHASocialWork.Core;
+@using MvcContrib.UI.Pager;
+@using MvcContrib.Pagination;
+
+<div class='eventMembersGridContainer' style='width:760px;'>
+    @if (Model.Data.Count() > 0)
+    {
+        <script type="text/javascript">
+            $(function () {
+                $(".requestedCoordinatorsGrid").find(".pagerContainer").find("a").each(function () {
+                    var href = $(this).attr("href").replace("/members", "/requestedcoordinators");
+                    $(this).attr("href", href);
+                });
+            });
+        </script>
+        <div class='requestedCoordinators grid'>
+            <div class='header'>
+                <div class='headerRow'>
+                    <div class='cell profileImage'>&nbsp
+                    </div>
+                    <div class='cell name'>
+                        Name
+                    </div>
+                    <div class='cell date'>
+                        Requested Date
+                    </div>
+                    <div class='cell date' style='width:100px;'>
+                        Start Date
+                    </div>
+                    <div class='cell date' style='width:100px;'>
+                        End Date
+                    </div>
+                </div>
+            </div>
+            <div class='membersGrid'>
+                @foreach (var member in Model.Data)
+                {
+                    <div class='row'>
+                        <div class='cell profileImage'>
+                            @{Html.RenderPartial("~/Views/Shared/EditorTemplates/DisplayImage.cshtml", member.ProfileImage);}
+                        </div>
+                        <div class='cell name'>
+                            <label>@member.Name</label>
+                        </div>
+                        <div class='cell date'>
+                            <label>@member.LastStatusChange.ToShortDateString()</label>
+                        </div>
+                        <div class='cell date' style='width:100px;'>
+                            <label>@member.StartDate.ToShortDateString()</label>
+                        </div>
+                        <div class='cell date' style='width:100px;'>
+                            <label>@member.EndDate.ToShortDateString()</label>
+                        </div>
+                        <div class='cell buttons'>
+                            @{Html.RenderPartial("approvecoordinatorbutton", member.Id);}
+                            @{Html.RenderPartial("denycoordinatorbutton", member.Id);}
+                        </div>
+                    </div>
+                    <div class='clear'></div>
+                }
+                <div class='pagerContainer'>
+                    @(new MvcHtmlString(Html.Pager(Model.Data).ToString()))
+                </div>
+            </div>
+        </div>
+    } else {
+        <div class='emptyResultContainer'>
+            <h3>No request are currently pending.</h3>
+        </div>
+    }        
+</div>

@@ -1,0 +1,53 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using LHASocialWork.Core.Extensions;
+@using LHASocialWork.Entities.Enumerations;
+
+<div class='formContainer eventContainer'>
+    <div class='eventTopContainer'>
+        <div class='eventFlyerContainer'>       
+            @Html.EditorFor(m => m.Flyer)
+        </div>
+        <div class='eventTitleContainer'>    
+            <div class='eventTitleContainerName'>@Model.Name</div>
+            <div class='eventTitleContainerDate'>@Model.DefaultDateDisplay</div>
+            <div class='eventButtonContainer'>
+                <div style='display:inline-block;'>
+                    @if(!Model.MemberStatus.HasSubmittedRequest()) {
+                        Html.RenderPartial("JoinButton", new LHASocialWork.Models.Event.EventButtonModel {EventName = Model.Name});
+                    }else if(Model.MemberStatus == EventMemberStatus.Requested) {
+                        Html.RenderPartial("CancelJoinRequestButton", new LHASocialWork.Models.Event.EventButtonModel {EventName = Model.Name });
+                    }                
+                    @if(!Model.CoordinatorStatus.HasSubmittedRequest()){
+                        Html.RenderPartial("VolunteerButton", new LHASocialWork.Models.Event.EventButtonModel { EventName = Model.Name });
+                    }else if(Model.CoordinatorStatus == EventMemberStatus.Requested){
+                        Html.RenderPartial("CancelVolunteerRequestButton", new LHASocialWork.Models.Event.EventButtonModel {EventName = Model.Name });
+                    }
+               <div class='clear'></div>
+               </div>
+            </div>
+        </div>
+    </div>
+    <div class='eventBottomContainer'>
+        <div class='eventDescription'>
+            @(new HtmlString(Model.Description))
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src='@Url.Content("~/scripts/jQuery.UI/jquery.ui.datepicker.js")'></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jQuery.Custom/LHA.ComplexDateTime.js")"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".complexDateTime").complexDateTime();
+        $(".volunteerButton").click(function (event) {
+            $(this).parents('.button').first().removeClass('button');
+            $(this).hide().prev().show();
+            event.preventDefault();
+            return false;
+        });
+    });
+</script>

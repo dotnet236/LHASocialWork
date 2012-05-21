@@ -1,0 +1,32 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+
+@{
+    View.Title = "Home Page";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <title>StartPage</title>
+</head>
+<body>
+
+    <p>
+	    <div class='smallFormContainer'>
+		    <div>
+			    What would you like to do?
+		    </div>
+		    <div class='linkList'>
+			    <p><a href='@Url.Action("../Accounts/LogIn")'>LogIn</a></p>
+			    <p><a href='@Url.Action("../Accounts/Register")'>Create Account</a></p>
+			    <p><a href='javascript:'>Volunteer</a></p>
+			    <p><a href='javascript:'>Donate</a></p>
+			    <p><a href='javascript:'>Locate Class or Service</a></p>
+		    </div>
+	    </div>
+    </p>
+
+</body>
+</html>

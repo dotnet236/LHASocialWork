@@ -1,0 +1,42 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Areas.Admin.Models.Positions.CreatePositionViewModel>
+@using System.Web.Mvc.Html
+@using System.Web.Mvc
+@using MvcContrib.FluentHtml;
+@using LHASocialWork.Core.HtmlHelpers;
+
+@{
+    View.Title = "CreatePosition";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<div class='headerNavigationLinks'>
+    @Html.ActionLink("Back to Positions", "Index")
+</div>
+
+@using (Html.BeginForm("CreatePosition", "Positions", new {}, FormMethod.Post, new { @class = "formContainer" })) {
+    @Html.ValidationSummary(true, "Position creation was unsuccessful. Please correct the errors and try again.")
+    @Html.AntiForgeryToken();
+
+	<h2 style='text-align:center;'>Create a New Position</h2>
+    <div>
+		<div class='subFormContainer'>
+			<div class="editor-label">
+				@Html.LabelFor(m => m.Name)
+			</div>
+			<div class="editor-field">
+				@Html.TextBoxFor(m => m.Name)
+				@Html.ValidationMessageFor(m => m.Name)
+			</div>
+
+			<div class="editor-label">
+				@Html.LabelFor(m => m.SystemRoles)
+			</div>
+			<div class="editor-field">
+                @Html.RadioButtonListFor(Model.SystemRoles, "SystemRole")
+                @Html.ValidationMessageFor(m => m.SystemRoles)
+			</div>
+        </div>
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </div>
+}

@@ -1,0 +1,40 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventClassesModel>
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using LHASocialWork.Core.Extensions;
+@using LHASocialWork.Core;
+@{
+    View.Title = Bootstrapper.SiteTitle + " - Classes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section leftNav{
+    @{Html.RenderPartial("SearchNav");}
+}
+
+<div>
+    <div class='gridContainer'>
+        <div id='gridContents' class='gridContents pagerContentContainer'>
+            @{Html.RenderPartial("SearchResults", Model.SearchResults);}
+        </div>
+    </div>
+</div>
+
+@section script {
+    <script type="text/javascript" src='@Url.Content("~/scripts/jQuery.UI/jquery.ui.accordion.js")'></script>
+    <script type="text/ecmascript" src="@Url.Content("~/Scripts/jQuery.LiveQuery/jquery.livequery.js")"></script>
+    <script type="text/ecmascript" src="@Url.Content("~/Scripts/jQuery.Custom/LHA.AjaxPager.js")"></script>
+    <script type="text/javascript" src='@Url.Content("~/scripts/jQuery.UI/jquery.ui.datepicker.js")'></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jQuery.Custom/LHA.ComplexDateTime.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".complexDateTime").complexDateTime();
+            $(".volunteerButton").click(function (event) {
+                $(this).parents('.button').first().removeClass('button');
+                $(this).hide().prev().show();
+                event.preventDefault();
+                return false;
+            });
+        });
+    </script>
+}

@@ -1,0 +1,60 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using System.Web.Mvc.Ajax;
+
+<span style='margin-bottom:5px;'>Search</span>
+<div id="accordion">
+    <h3>
+        <a href="#ByName">By Name</a>
+    </h3>
+    <div>
+        @using (Ajax.BeginForm(Request.Params["action"], Request.Params["controller"], new {}, new AjaxOptions { HttpMethod = "Post" }, new { id = "searchByNameForm" } ))
+        { 
+            @Html.AntiForgeryToken();            
+            <fieldset>
+                <input type="hidden" name="PropertyName" value="Name" />
+                <input type="hidden" name="Conditional" value="Like" />
+                <input type="text" id="search" name="PropertyValue" style='width:120px;margin:10px 0px 0px 8px;' />
+                <input type="submit" value="" id="submit" style="width:30px; height:21px; border:none;cursor:pointer; background-image:url('@Url.Content("~/Content/Images/go.gif")')" />            
+            </fieldset>
+        }
+    </div>
+    <h3>
+        <a href="#ByDate">By Date</a>
+    </h3>
+    <div>
+        @using (Ajax.BeginForm(Request.Params["action"], Request.Params["controller"], new { }, new AjaxOptions { HttpMethod = "Post" }, new { id = "searchByDateForm" }))
+        { 
+            @Html.AntiForgeryToken();             
+            <fieldset>
+                <input type="hidden" name="Conditional" value="GreaterThanOrEqual" />
+                <input type="hidden" name="PropertyName" value="StartDate" />                
+                <div style='float:left;width:41px;margin:3px 5px;'>Start: </div>
+                <input value="@DateTime.Now.ToShortDateString()" type="text" class='startDate dateTime' name="PropertyValue" />          
+            </fieldset>
+            <fieldset>
+                <input type="hidden" name="Conditional" value="LessThanOrEqual" />
+                <input type="hidden" name="PropertyName" value="EndDate" />
+                <div style='float:left;width:41px;margin:3px 5px;'>End: </div>
+                <input value="@DateTime.Now.ToShortDateString()" type="text" class='endDate dateTime' name="PropertyValue" />
+                <input type="submit" value="" style="width:30px; height:21px; border:none;cursor:pointer; background-image:url('@Url.Content("~/Content/Images/go.gif")')" />                          
+            </fieldset>
+        }
+    </div>
+</div>
+
+<script type="text/javascript" src='@Url.Content("~/scripts/jQuery.UI/jquery.ui.datepicker.js")'></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jQuery.Custom/LHA.ComplexAjaxSearch.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jQuery.Custom/LHA.ComplexDateTime.js")"></script>
+
+<script type="text/javascript">
+    $(function () {
+
+        $("#accordion").accordion();
+        $("#searchByNameForm").complexAjaxSearch("gridContents");
+        $("#searchByDateForm").complexAjaxSearch("gridContents");
+        $("#searchByDateForm").complexDateTime();
+    });
+</script>

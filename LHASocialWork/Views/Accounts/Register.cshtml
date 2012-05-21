@@ -1,0 +1,11 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Account.CreateAccountViewModel>
+
+@using System.Web.Mvc.Html
+@using System.Web.Mvc
+
+@{
+    View.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{Html.RenderPartial("CreateAccountPartial", Model);}

@@ -1,0 +1,17 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Account.CreateAccountViewModel>
+
+@using System.Web.Mvc.Html
+@using System.Web.Mvc
+
+@{
+    View.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section leftNav{
+    @{Html.RenderPartial("SideNavPartial");}
+}
+
+<div class='formContainer'>
+    <h2>Wall of current events and postings.</h2>
+</div>

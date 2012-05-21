@@ -1,0 +1,26 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventCoordinatorsModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using LHASocialWork.Core.Extensions;
+@using LHASocialWork.Core;
+
+@{
+    View.Title = Bootstrapper.SiteTitle + " - Events";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section leftNav{
+    @{Html.RenderPartial("SideNav", Model.Event);}
+}
+
+<div>
+    @if(Model.UserIsAdmin) {
+        Html.RenderPartial("AllCoordinators", Model);
+    }else {
+        <div style='border: 1px solid #4975A6;-moz-border-radius: 15px;'>
+            @{Html.RenderAction("ConfirmedCoordinators");}
+        </div>
+    }
+</div>

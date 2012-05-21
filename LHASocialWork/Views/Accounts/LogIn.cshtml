@@ -1,0 +1,10 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Account.AccountLogInModel>
+@using System.Web.Mvc.Html
+@using System.Web.Mvc
+
+@{
+    View.Title = "LogIn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{Html.RenderPartial("LogInPartial", Model);}

@@ -1,0 +1,46 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Areas.Admin.Models.Positions.CreateUserPositionViewModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+
+@{
+    View.Title = "Administration Manager - Position's Users";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class='headerNavigationLinks'>
+    @Html.ActionLink("Back to Position", "Position", new { id = Model.PositionId })
+</div>
+
+@using (Html.BeginForm("CreateUserPosition", "Positions", new { }, FormMethod.Post, new { @class = "formContainer" }))
+{
+    @Html.ValidationSummary(true, "User position creation was unsuccessful. Please correct the errors and try again.")
+    @Html.AntiForgeryToken();
+
+    <h2>Attach user with position</h2>
+    <div>
+        @Html.HiddenFor(x => x.PositionId)
+		<div class="editor-label">
+			@Model.Name
+		</div>
+		<div class="editor-field">
+			@Html.TextBoxFor(m => m.UserIds)
+			@Html.ValidationMessageFor(m => m.UserIds)
+		</div>
+    </div>
+    <input type="submit" value="Save" />
+}
+
+@section script {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jQuery.UI/jquery-ui-1.8.6.custom.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jQuery.Custom/LHA.MultiAutoComplete.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            var url = "@Url.Action("SearchByName", "Accounts", new { area = "" })";
+            $("#UserIds").multiAutoComplete(url);
+        });
+    
+    </script>
+}
+

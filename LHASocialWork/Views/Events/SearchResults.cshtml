@@ -1,0 +1,65 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventSearchResultModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using MvcContrib.UI.Pager;
+@using MvcContrib.Pagination;
+@using LHASocialWork.Core.Extensions;
+@using LHASocialWork.Entities.Enumerations;
+
+<div class='eventSearchTitle'>
+    <h2 style='text-align:left;color:Black;'>@Model.EventSearchCategory</h2>
+</div>
+
+<div class='eventSearchResultsContainer'>
+    @foreach (var evt in Model.Data) {
+        <div class='eventResultContainer'>
+            <div class='flyer'>
+                @{Html.RenderPartial("~/Views/Shared/EditorTemplates/DisplayImage.cshtml", evt.Flyer);}
+            </div>
+            <div style='float:left;'>
+                <div style='height:30px;'>
+                    <div class='title'>
+                        <span class='eventName'>
+                            <a href='@Url.RouteUrl("Event", new { controller = "events", eventName = evt.Name.ToLower()})'>@evt.Name.ToWebLength(20)</a>
+                        </span>
+                    </div>
+                    <div class='datetime'>
+                        <span class='eventDate'>@evt.DefaultDateDisplay</span>            
+                    </div>                
+                </div>
+                <div class='description clear'>
+                    @(new HtmlString(evt.Description.ToWebLength(225)))            
+                </div>   
+                <div class='buttonsContainer'>
+                    @if(!evt.MemberStatus.HasSubmittedRequest() && evt.MemberStatus != EventMemberStatus.Invited) {
+                        Html.RenderPartial("JoinButton", new LHASocialWork.Models.Event.EventButtonModel {EventName = evt.Name});
+                    }else if(evt.MemberStatus == EventMemberStatus.Requested) {
+                        Html.RenderPartial("CancelJoinRequestButton", new LHASocialWork.Models.Event.EventButtonModel {EventName = evt.Name });
+                    }else if(evt.MemberStatus == EventMemberStatus.Invited){
+                        Html.RenderPartial("AcceptMemberInvitationButton", evt.Name);
+                    }
+                    @if(!evt.CoordinatorStatus.HasSubmittedRequest()){
+                        Html.RenderPartial("VolunteerButton", new LHASocialWork.Models.Event.EventButtonModel { EventName = evt.Name });
+                    }else if(evt.CoordinatorStatus == EventMemberStatus.Requested){
+                        Html.RenderPartial("CancelVolunteerRequestButton", new LHASocialWork.Models.Event.EventButtonModel {EventName = evt.Name });
+                    }
+                </div>             
+            </div>              
+        </div>
+    }
+    @if (Model.Data.Count() == 0)
+    {
+        <div>
+            <h3 style='margin-left:10px;font-weight:normal;'>No @Model.EventSearchCategory found.</h3>
+        </div>
+    }        
+</div>
+
+<div class='pagerContainer'>
+    @(new MvcHtmlString(Html.Pager(Model.Data).ToString()))
+</div>
+
+
+

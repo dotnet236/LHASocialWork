@@ -1,0 +1,39 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventMembersModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using LHASocialWork.Core.Extensions;
+@using LHASocialWork.Core;
+
+<h2 style='text-align:center;'>Manage Event Members</h2>
+                      
+<div id="tabs">
+    <ul>            
+        <li><a href="#fragment-1"><span>Attending</span></a></li>
+        <li><a href="#fragment-2"><span>Requested</span></a></li>
+        <li><a href="#fragment-3"><span>Invited</span></a></li>
+        <li><a href="#fragment-4"><span>Add More</span></a></li>
+    </ul>
+    <div id="fragment-1" class='pagerContentContainer'>
+        @{Html.RenderAction("AttendingMembers");}
+    </div>
+    <div id="fragment-2" class='pagerContentContainer'>
+        @{Html.RenderAction("RequestedMembers");}
+    </div>
+    <div id="fragment-3" class='pagerContentContainer'>
+        @{Html.RenderAction("InvitedMembers");}
+    </div>
+    <div id="fragment-4" class='pagerContentContainer'>
+        @{Html.RenderAction("InviteMembers");}
+    </div>
+</div>
+    
+<script type="text/javascript" src="@Url.Content("~/Scripts/jQuery.UI/jquery-ui-1.8.6.custom.js")"></script>
+<script type="text/ecmascript" src="@Url.Content("~/Scripts/jQuery.LiveQuery/jquery.livequery.js")"></script>
+<script type="text/ecmascript" src="@Url.Content("~/Scripts/jQuery.Custom/LHA.AjaxPager.js")"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#tabs").tabs();
+    });
+</script>

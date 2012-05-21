@@ -1,0 +1,901 @@
+﻿/*----------------------------------------------------------
+The base color for this template is #5c87b2. If you'd like
+to use a different color start by replacing all instances of
+#5c87b2 with your new color.
+----------------------------------------------------------*/
+body
+{
+    font: 0.8125em/1 Verdana,sans-serif;
+    background-color: #ffffff;
+    font-size: .75em;
+    margin: 0;
+    padding: 0;
+    color: #696969;
+}
+
+* { margin:0px; }
+
+a:link
+{
+    color: #26628B;
+    text-decoration: none;
+}
+a:visited
+{
+    color: #26628B;
+    text-decoration: none;
+}
+a:hover
+{
+    color: #1d60ff;
+    text-decoration: underline;
+}
+a:active
+{
+    color: #12eb87;
+}
+
+a:focus { outline: none; } 
+
+p, ul
+{
+    margin-bottom: 20px;
+    line-height: 1.6em;
+}
+
+input.text
+{
+    background: none repeat scroll 0 0 #FBFAF4;
+    border-color: #999999 #D9D9D9 #D9D9D9 #999999;
+    border-style: solid;
+    border-width: 2px;
+}
+/* HEADINGS   
+----------------------------------------------------------*/
+h1, h2, h3, h4, h5, h6
+{
+    font-size: 1.5em;
+    color: #000;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1
+{
+    font-size: 2em;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+h2
+{
+    padding: 0 0 2 0;
+    color: Navy;
+    text-align:center;
+}h3
+{
+    font-size: 1.2em;
+}
+h4
+{
+    font-size: 1.1em;
+}
+h5, h6
+{
+    font-size: 1em;
+}
+.clear 
+{
+    clear:both;
+}
+
+/* Main Layout */
+.panels
+{
+    height: 100%;
+}
+.leftInnerPanel
+{
+    margin:2px;
+    background: #ccc url(/LHASocialWork/Content/Images/LeftColumnBackground.png) repeat-y 50% 0;
+    padding: 10px 10px 0px 10px;
+    height:100%;
+}
+.leftInnerPanel .newMessagesContainer
+{
+    border: 1px solid #4975A6;
+    -moz-border-radius: 15px;
+    padding: 10px;
+    width: 135px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    text-transform:none;
+}
+.leftOutterPanel h3 
+{
+    color: #333333;
+    font: 1.5em Georgia,Times,serif;
+    letter-spacing: 0;
+    margin-bottom: 0.25em;
+    text-transform: none;
+}
+.leftOutterPanel {
+    
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    width:200px;
+    position:absolute;    
+    float:left;
+    border-right: 1px solid #D9D9D9;
+    height:100%;
+}
+#search, #submit 
+{
+    vertical-align:bottom;
+}
+.leftInnerPanel div
+{
+    padding: 3px 0px;
+}
+.rightPanel 
+{
+    float:left;
+    padding: 30px 0px 0px 270px;
+}
+.headerNavigationLinks a
+{
+    margin: 0px 10px 0px 10px;
+}
+/* Forms */
+.formContainer
+{
+    border: 1px solid #4975A6;
+    -moz-border-radius: 15px;
+    padding: 20px;
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+.smallFormContainer
+{
+    border: 1px solid #4975A6;
+    -moz-border-radius: 15px;
+    padding: 20px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+.subFormContainer
+{
+    padding: 10px 0px 10px 10px;
+    border-bottom: 1px solid #CCCCCC;
+    margin:10px 0px;
+}
+.submitButtonContainer 
+{
+    margin: 5px 0px 0px 0px;
+    text-align:center;
+    height:30px;
+}
+fieldset 
+{
+    padding:0;border:0;
+}
+input::-moz-focus-inner { border: 0; }
+.button input 
+{
+    border: none;
+    background: none;
+    padding : 0px;
+    margin:0px;    
+    cursor:pointer;
+    font-family: Sans-Serif;
+    font-size: 13px; 
+}
+.button a 
+{
+    color: black;
+    text-decoration : none;
+    font-family: Sans-Serif;
+    font-size: 13px; 
+}
+.button
+{
+   
+    color : Black;
+    border: 1px solid #4975A6;
+    cursor: pointer;
+    margin: 0 2px 0;
+    padding: 2px 14px;    
+    background-color : #F0F0F0;
+    text-align:center;
+    vertical-align : middle;
+    float:left;
+    height:19px;    
+}
+.button:hover 
+{
+    text-decoration : underline;
+    background:white;
+}
+.editor-label
+{
+    font-weight: bold;
+    margin:0px 0px 3px 0px;
+}
+
+.editor-field
+{
+    padding-left: 5px;
+    margin-bottom: 5px;
+}
+
+.editor-field input
+{
+    border: 1px solid gray;
+    width: 300px;
+}
+.editor-label-inline
+{
+    float: left;
+    width: 100px;
+    padding-left: 5px;
+    margin-bottom: 5px;
+}
+.editor-field-inline
+{
+    float: left;
+    padding-left: 5px;
+    margin-bottom: 5px;
+    width: 330px;
+}
+.editor-field-inline input
+{
+    border: 1px solid gray;
+    width: 330px;
+}
+.editor-property-inline
+{
+    position: relative;
+    clear: both;
+}
+.linkList
+{
+    margin-left: 20px;
+}
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+.input-validation-invalid 
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    color: #ff0000;
+    text-align: center;
+}
+.field-validation-error
+{
+    color: #ff0000;
+    text-align: center;
+}
+.editor-errormessage-inline
+{
+    float: right;
+}
+
+/* Site Header */
+.siteHeaderOutterContainer
+{
+    text-align: right;
+    border-bottom: 1px solid #4975A6;
+    width: 100%;
+}
+.siteHeaderInnerContainer
+{
+    padding: 2px 10px 3px 0px;
+    background-color: #26628B;   
+    color: white; 
+}
+.siteHeaderInnerContainer a 
+{
+    color: White;
+    font-size:10px; 
+}
+
+#navbar li a {
+    color: #000000;
+    display: block;
+    padding: 0.75em 0 0.25em;
+    text-transform: uppercase;
+}
+#navbar 
+{   
+    background: none repeat scroll 0 0 #FBFAF4;
+
+    font: 18px Georgia,Times,serif;
+    height: 2.4em;
+    min-width: 750px;
+    overflow: hidden;
+    padding: 0 0 0 215px;
+    margin:0px;
+}
+#navbar a:hover
+{
+    background: url("/LHASocialWork/Content/Images/navbarlinkbg.gif") repeat-x scroll left top transparent;
+    color: #555555;
+}
+#navbar .last 
+{
+    background : none;
+}
+
+#navbar li {
+    background: url("/LHASocialWork/Content/Images/diamond-black.gif") no-repeat scroll 100% 66% transparent;
+    float: left;
+    margin-right: 5px;
+    padding: 0 23px 0 13px;
+}
+.topNavigationBar ul, ol {
+    list-style: none outside none;
+}
+
+/* LHA.MultiAutoComplete */
+.multiAutoCompleteSelectList
+{
+    width: 290px;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: 1px solid #4975A6;
+    margin: 10px 0px 0px 0px;
+}
+.multiAutoCompleteSelectList
+{
+    padding: 5px;
+}
+.multiAutoCompleteSelectList a
+{
+    color: Navy;
+}
+
+.multiAutoCompleteSelectList label
+{
+    margin-right: 5px;
+}
+
+/* ConfirmableActionLink */
+.confirmableActionLink
+{
+    border: medium none;
+    background: none repeat scroll 0% 0% transparent;
+    color: rgb(80, 90, 188);
+    cursor: pointer;
+}
+
+/* ComplexDateTime */
+.complexDateTime
+{
+    margin: 0px 0px 0px 5px;
+}
+
+.complexDateTime .container
+{
+    float: left;
+    margin-right: 5px;
+}
+.complexDateTime input
+{
+    width: 70px;
+}
+.dateTime 
+{
+    width:79px;
+}
+/* Inline Label */
+.inlineLabel
+{
+    font-weight: bold;
+}
+
+/* System Message */
+
+.systemMessages 
+{
+    margin-top:10px;
+}
+.systemMessage
+{
+    width: 100%;
+    padding:5px;
+    -moz-border-radius: 5px;
+    border: 1px solid #F2A640;
+    background-color : #FFF4BF;
+    color : Gray;
+    margin:5px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+a.systemMessageCloseButton
+{
+    color : #ff0000;
+    float: right;
+    cursor: pointer;
+}
+
+a.systemMessageCloseButton:hover
+{
+    font-weight:bold;
+    text-decoration : none;
+}
+
+.systemMessage ErrorMessage
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+.systemMessage AlertMessage
+{
+    border-color: #D1BC36;
+    background-color: #E0C240;
+}
+
+/* Event */
+.eventContainer 
+{
+    min-height:200px;
+}
+
+.eventTopContainer 
+{
+    clear:both;
+    height: 180px;
+}
+.eventFlyerContainer
+{
+    float:left;
+    border: 1px solid gray;
+    padding: 10px;
+    background: #DFDFDF;
+}
+.eventTitleContainer
+{
+    margin-left: 200px;    
+    padding-top:10px;
+}
+.eventButtonContainer 
+{
+    text-align:center;
+}
+.eventTitleContainerName
+{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+.eventTitleContainerDate
+{
+    text-align:center;
+    margin-top:10px;
+}
+.eventTitleContainerDate .time
+{
+    margin-top:10px;
+}
+.eventSideNavigation 
+{
+    font-size : 14px;
+}
+.eventSideNavigation div 
+{
+    margin:5px 0px 0px 5px;
+}
+/* Event Search */
+.eventResultContainer 
+{
+    border-bottom: 1px solid #4975A6;
+    width:100%;    
+    height : 100px;
+    padding:10px 10px 10px 10px;
+    overflow:hidden;
+}
+.eventSearchTitle 
+{
+}
+.eventSearchResultsContainer
+{
+    margin-top:10px;
+}
+.eventResultContainer .eventName 
+{
+    font-size:17px;
+    color: #2E6E9E;
+    margin-right:10px;
+    vertical-align : middle;
+}
+.eventResultContainer .flyer
+{
+    width: 87px; 
+    float: left;
+    border: 1px solid gray;
+    padding: 10px;
+    background: #DFDFDF;  
+    margin: 10px 30px 0px 0px;      
+}
+.eventResultContainer .datetime 
+{
+    font-weight:bold;
+    text-align:center;
+    font-size:10px;
+    float:right;
+    width:300px;
+}
+.eventResultContainer .title
+{
+    float:left;
+    margin-right:5px;
+}
+.eventResultContainer .description
+{
+    width:500px;
+    height: 37px;
+    overflow: hidden;
+}
+.occurrence 
+{
+    float:left;
+}
+
+/* Event Members */
+.eventMembersGridContainer 
+{
+    width:550px;
+    height:310px;
+    position:relative;
+}
+
+.eventMembersGridContainer .row 
+{
+    height:45px;
+    padding:5px 0px 3px 0px;
+    border-bottom: 1px solid #DFEFFC;
+    vertical-align : bottom;
+}
+.eventMembersGridContainer .headerRow
+{
+    font-weight:bold;
+    height:25px;
+}
+.eventMembersGridContainer .header .cell 
+{
+    float: left;
+}
+.eventMembersGridContainer .grid 
+{
+    padding:15px;
+    border : none;
+}
+.eventMembersGridContainer .cell 
+{
+    float: left;
+    margin-top:10px;
+}
+.eventMembersGridContainer .buttons 
+{
+    margin-top:6px;
+}
+.eventMembersGridContainer .name
+{
+    width:200px;
+    margin-left:35px;
+}
+.eventMembersGridContainer .name
+{
+    width:140px;
+}
+.eventMembersGridContainer .date
+{
+    width:125px;
+}
+.eventMembersGridContainer .pagerContainer 
+{
+    position: absolute;
+    bottom:0px;
+}
+.eventMembersGridContainer .profileImage 
+{
+    width:45px;
+    margin:0px;
+}
+.emptyResultContainer 
+{
+    text-align: center;
+}
+.emptyResultContainer h3
+{
+    display: inline-block;
+    font-weight: bold;
+    margin: 85px 0;
+}
+
+/* Grid */
+.gridContainer
+{
+    
+}
+.gridTop
+{
+    background-image: url("/LHASocialWork/Content/Images/gridTopBackground.gif");
+    border: 1px solid #99BBE8;
+    border-top: none;
+    color: #15428B;
+    font-family: tahoma,arial,verdana,sans-serif;
+    font-size: 11px;
+    font-weight: bold;    
+    height:28px;
+}
+.gridTitle 
+{
+    float: left;
+    font-size:14px;
+    color:Navy;
+    padding: 3px 0 0 5px;
+}
+.gridTopLinks
+{
+    float:right;
+    padding: 12px 5px 0px 0px
+}
+.grid 
+{
+    border:1px solid #99BBE8;
+    color:Black;
+    border-spacing:0px;
+    border-top:none;
+}
+.grid a
+{
+    color: black;
+    font-weight: normal;
+}
+.grid td a 
+{
+    color: #034af3; 
+}
+.grid th
+{
+    background-color: #F9F9F9;
+    background-image: url("/LHASocialWork/Content/Images/gridHeaderBackground.gif");
+    border-left: 1px solid;
+    border-right: 1px solid;
+    line-height: 15px;
+    vertical-align: middle;
+    border-left-color: #EEEEEE;
+    border-right-color: #D0D0D0;
+    padding:4px;
+    border-bottom: 1px solid #D0D0D0;
+}
+.grid td 
+{
+    border-color: #FFFFFF #EDEDED #EDEDED;   
+    padding-left:10px;
+}
+
+.grid .gridrow_alternate
+{
+    background-color: #FAFAFA;
+}
+.gridrow_alternate td
+{
+    border-top: 1px dotted #99BBE8;
+    border-bottom: 1px dotted #99BBE8;    
+}
+
+/* Pager */
+.pagerContainer 
+{
+    margin: 10px 0px 10px 0px;
+    padding:0px 0px 0px 5px;
+}
+.pagination a
+{
+    color: #26628B;
+    text-decoration: none;
+}
+
+.pagination a:hover
+{
+    color: #26628B;
+    text-decoration: underline;
+}
+
+/* Image FileUploader */
+.imageFileUploadContainer 
+{
+    width : 230px;
+    background : none repeat scroll 0 0 #DFEEFF;
+    padding: 10px 0px 10px 10px;
+}
+
+.imageFileUploadChangeButton 
+{
+    vertical-align: top;
+}
+
+.imageFileUploadButton 
+{
+}
+
+.ui-accordion-header
+{
+    -moz-border-radius:0px;
+    padding: 0px 5px;
+    cursor:pointer;
+}
+.ui-accordion-content
+{
+    border: 1px solid #4297D7;
+    margin-bottom: 10px;
+    -moz-border-radius:0px;
+    height:100%;
+}
+.ui-accordion .ui-icon 
+{
+    height:0px;
+    width:0px;
+}
+
+/* searchByDateForm */
+#searchByDateForm div 
+{
+    font-size:10px;
+}
+
+/* Tabs */
+#tabs { border : none; }
+.textTabs .ui-tabs-nav
+{
+    padding : 0;
+    margin: 0;    
+}
+.textTabs .ui-widget-header {
+    border-bottom:none;
+}
+.textTabs .ui-state-default 
+{
+    background :white;
+    border:none;
+}
+.textTabs .ui-tabs-panel
+{
+    border : none;
+    padding: 0px;
+}
+.textTabs .ui-tabs-nav li 
+{
+    top : 0px;
+}
+    
+/* UserThumbnailDisplay */
+.userThumbnailDisplay .image
+{
+    float:left;
+}
+.userThumbnailDisplay .thumbnailContainer 
+{
+    float: left;
+    width:120px;
+    height:45px;
+    margin: 5px;
+}
+.thumbnailContainer .name 
+{
+    padding:2px 0px 0px 5px;
+    font-weight:bold;
+    overflow:hidden;
+}
+.userThumbnailDisplay
+{
+    height : 125px;
+    width: 550px;
+    border : 1px solid #D9D9D9;
+    padding : 10px;    
+    margin:0;
+}
+.userThumbnailDisplay li
+{
+    border:1px solid white;    
+    list-style-type:none;
+    padding:2px;
+    background:white;
+}
+.userThumbnailDisplay li:hover
+{
+    border:1px solid #4975a6;   
+    background: #DFEFFC;
+    cursor:pointer;
+}
+
+/* Inviter */
+.unsentInvites .content
+{
+    width: 350px;
+    border : 1px solid #D9D9D9;
+    height : 108px;
+}
+.unsentInvites .leftColumn 
+{
+    width:270px;
+    float:left;
+    height:108px;
+    border-right:1px solid #D9D9D9;
+}
+.unsentInvites .rightColumn 
+{
+    float:left;
+    text-align:center;
+}
+.unsentInvites .button 
+{
+    display:inline-block;
+}
+.unsentInvites .removeButton 
+{
+    color :Red;
+    cursor:pointer;
+    float:right;
+}
+.unsentInvites .name 
+{
+    float:left;
+    width:100px;
+    overflow:hidden;
+    padding:0px 0px 0px 5px;
+}
+.unsentInvites .header
+{
+    width:100%;font-weight:bold;margin:20px 0px 5px 5px;
+}
+.unsentInvites .invitationListContainer
+{
+    overflow-y:auto;
+    overflow-x:hidden;
+    padding:5px;
+    height:98px;
+}
+
+.invitationListContainer .invitationListItem 
+{
+    border-bottom : 1px dotted #4975A6;
+    height:15px;
+    margin:5px 0px 0px 0px;
+    white-space:nowrap;
+}
+.inviteByEmailContainer .leftColumn
+{
+    float:left;
+    height : 125px;
+    width: 450px;
+    border : 1px solid #D9D9D9;
+    padding : 10px;    
+    margin:0;
+}
+.inviteByEmailContainer .rightColumn 
+{
+    float:left;
+}
+
+.inviteByEmailContainer textarea 
+{
+    width:440px;
+    height:115px;
+}
+    
+    

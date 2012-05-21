@@ -1,0 +1,71 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventAttendingMembersModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using LHASocialWork.Core.Extensions;
+@using LHASocialWork.Core;
+@using MvcContrib.UI.Pager;
+@using MvcContrib.Pagination;
+
+<div class='eventMembersGridContainer'>
+    @if (Model.Data.Count() > 0)
+    {
+        <script type="text/javascript">
+            $(function () {
+                $(".attendingMembersGrid").find(".pagerContainer").find("a").each(function () {
+                    var href = $(this).attr("href").replace("/members", "/attendingmembers");
+                    $(this).attr("href", href);
+                });
+            });
+        </script>
+        <div class='attendingMembersGrid grid'>
+            <div class='header'>
+                <div class='headerRow'>
+                    <div class='cell profileImage'>&nbsp</div>
+                    <div class='cell name'>Name</div>
+                    <div class='cell date'>Member Since</div>
+                </div>
+            </div>
+            <div class='membersGrid'>
+                @foreach (var member in Model.Data)
+                {
+                    <div class='row'>
+                        <div class='cell profileImage'>
+                            @{Html.RenderPartial("~/Views/Shared/EditorTemplates/DisplayImage.cshtml", member.ProfileImage);}
+                        </div>
+                        <div class='cell name'>
+                            <label>@member.Name</label>
+                        </div>
+                        <div class='cell date'>
+                            <label>@member.LastStatusChange.ToShortDateString()</label>
+                        </div>
+                        <div class='cell buttons'>
+                            @if (Model.UserIsAdmin)
+                            {
+                                Html.RenderPartial("RemoveMemberButton", member.Id);
+                            }
+                            else
+                            {
+                                <style>
+                                    .eventMembersGridContainer .grid 
+                                    {
+                                        padding:25px;
+                                    }
+                                </style>
+                            }
+                        </div>
+                    </div>
+                    <div class='clear'></div>
+                }
+                <div class='pagerContainer'>
+                    @(new MvcHtmlString(Html.Pager(Model.Data).ToString()))
+                </div>
+            </div>
+        </div>
+    } else {
+        <div class='emptyResultContainer'>
+            <h3>There are currently no members.</h3>
+        </div>
+    }        
+</div>

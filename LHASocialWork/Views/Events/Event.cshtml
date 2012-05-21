@@ -1,0 +1,16 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventModel>
+
+@using LHASocialWork.Core;
+@using System.Web.Mvc.Html;
+
+
+@{
+    View.Title = Bootstrapper.ApplicationName + " Event '" + Model.Name + "'";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section leftNav{
+    @{Html.RenderPartial("SideNav");}
+}
+
+@{Html.RenderPartial("~/Views/Events/EventPartial.cshtml", Model);}

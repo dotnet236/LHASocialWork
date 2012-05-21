@@ -1,0 +1,59 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.InviteEventMembersModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using System.Web.Mvc.Ajax;
+@using MvcContrib.UI.Grid;
+@using LHASocialWork.Core.Extensions;
+
+<div class='inviter'>
+    <div id="tabs" class='textTabs'>
+        <ul>            
+            @if (Model.IsCoordinator){
+            <li><a href="#existingUsers"><span>Users</span></a></li> 
+             }
+            <li><a href="#emailAddresses"><span>Email</span></a></li>
+            <li><a href="#facebookUsers"><span>Facebook</span></a></li>
+        </ul>
+        @if (Model.IsCoordinator) {
+        <div id="existingUsers" class='pagerContentContainer'>
+            @{Html.RenderAction("InviteExistingUsers");}
+        </div>
+        }
+        <div id="emailAddresses" class='pagerContentContainer'>
+            @{Html.RenderPartial("InviteByEmailAddress");}
+        </div>
+        <div id="facebookUsers">
+            Facebook PEOPLE
+        </div>
+    </div>
+
+    <div class='unsentInvites' style='display:none;'>  
+        <div class='header'>Pending Invites</div>
+        <div class='content'>
+            @using(Html.BeginForm("invitemembers", "events", new { eventName = ViewContext.RouteData.Values["eventName"] })){
+                @Html.AntiForgeryToken()
+                <div class='leftColumn'>
+                        <div class='invitationListContainer'>
+                        </div>
+                </div>
+                <div class='rightColumn'>
+                    <div class='button' style='height: 15px;margin: 10px 7px;'>
+                        <input type="submit" value='Invite' />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="@Url.Content("~/Scripts/jQuery.UI/jquery-ui-1.8.6.custom.js")"></script>
+<script type="text/ecmascript" src="@Url.Content("~/Scripts/jQuery.LiveQuery/jquery.livequery.js")"></script>
+<script type="text/ecmascript" src="@Url.Content("~/Scripts/jQuery.Custom/LHA.AjaxPager.js")"></script>
+<script type="text/ecmascript" src="@Url.Content("~/Scripts/jQuery.Custom/LHA.Inviter.js")"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $(".textTabs").tabs();
+    });
+</script>

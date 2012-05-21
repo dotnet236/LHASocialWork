@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap>
+  <siteMapNode title="Home" controller="Home" action="Index" changeFrequency="Always" updatePriority="Normal"> 
+  </siteMapNode> 
+</siteMap>

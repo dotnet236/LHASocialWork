@@ -1,0 +1,15 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Account.CreateAccountViewModel>
+
+@using System.Web.Mvc.Html
+@using System.Web.Mvc
+@{
+    View.Title = "CreateAccount";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class='headerNavigationLinks'>
+    @Html.ActionLink("Back to Accounts", "Index")
+</div>
+
+@{Html.RenderPartial("CreateAccountPartial", Model);}
+

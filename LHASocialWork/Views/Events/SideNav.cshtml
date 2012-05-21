@@ -1,0 +1,29 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventModel>
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using LHASocialWork.Core.Extensions;
+@using LHASocialWork.Entities.Enumerations;
+
+@{
+    var roles = TempData["Roles"] as List<SystemRole>;
+}
+<div class='eventSideNavigation'>
+    <div>
+        @Html.RouteLink("Home", "EventAction", new { action = "event", eventName = Model.Name.ToLower() })
+    </div>
+    <div>
+        @Html.RouteLink("Members", "EventAction", new { action = "members", eventName = Model.Name.ToLower() })
+    </div>
+    <div>
+        @Html.RouteLink("Coordinators", "EventAction", new { action = "coordinators", eventName = Model.Name.ToLower() })
+    </div>
+    <div>
+        @Html.ActionLink("Photos", "Index", "")
+    </div>
+    <div>
+        @Html.ActionLink("Videos", "Index", "")
+    </div>
+    <div>
+        @Html.ActionLink("Calendar", "Index", "")
+    </div>
+</div>

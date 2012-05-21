@@ -1,0 +1,27 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.ThumbnailsDisplayModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using MvcContrib.UI.Pager;
+@using LHASocialWork.Core.Extensions;
+
+<ul class='userThumbnailDisplay'>
+    @foreach (var thumbnail in Model.Data)
+    {
+        <li class='thumbnailContainer inviteElement'>
+            @Html.Hidden("id", thumbnail.Id)
+            <div class='image'>
+                @{Html.RenderPartial("~/Views/Shared/EditorTemplates/DisplayImage.cshtml", thumbnail.Thumbnail);}
+            </div>
+            <div class='name'>
+                @thumbnail.Name
+            </div>
+            <div class='clear'></div>
+        </li>
+    }
+</ul>
+
+<div class='pagerContainer'>
+    @(new MvcHtmlString(Html.Pager(Model.Data).ToString()))
+</div>

@@ -1,0 +1,52 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Templates.Address>
+
+@using System.Web.Mvc.Html
+@using System.Web.Mvc
+
+<div class="editor-label">
+	@Html.LabelFor(m => m.Street)
+</div>
+<div class="editor-field">
+	@Html.TextBoxFor(m => m.Street)
+	@Html.ValidationMessageFor(m => m.Street)
+</div>
+
+<div class="editor-label">
+	@Html.LabelFor(m => m.City)
+</div>
+<div class="editor-field">
+	@Html.TextBoxFor(m => m.City)
+	@Html.ValidationMessageFor(m => m.City)
+</div>
+
+<div class="editor-label">
+	@Html.LabelFor(m => m.State)
+</div>
+<div class="editor-field">
+	@Html.TextBoxFor(m => m.State)
+	@Html.ValidationMessageFor(m => m.State)
+</div>
+
+<div class="editor-label">
+	@Html.LabelFor(m => m.Province)
+</div>
+<div class="editor-field">
+	@Html.TextBoxFor(m => m.Province)
+	@Html.ValidationMessageFor(m => m.Province)
+</div>
+
+<div class="editor-label">
+	@Html.LabelFor(m => m.Country)
+</div>
+<div class="editor-field">
+	@Html.TextBoxFor(m => m.Country)
+	@Html.ValidationMessageFor(m => m.Country)
+</div>
+
+<div class="editor-label">
+	@Html.LabelFor(m => m.Zip)
+</div>
+<div class="editor-field">
+	@Html.TextBoxFor(m => m.Zip)
+	@Html.ValidationMessageFor(m => m.Zip)
+</div>

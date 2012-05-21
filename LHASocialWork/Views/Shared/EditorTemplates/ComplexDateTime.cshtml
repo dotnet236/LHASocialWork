@@ -1,0 +1,41 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Templates.ComplexDateTime>
+
+@using System.Web.Mvc;
+
+@if (string.IsNullOrEmpty(Model.PropertyName))
+{
+    Model.PropertyName = "DateTime";
+}
+@{
+    var startDateName = Model.PropertyName + ".StartDate";
+    var startTimeName = Model.PropertyName + ".StartTime";
+    var endDateName = Model.PropertyName + ".EndDate";
+    var endTimeName = Model.PropertyName + ".EndTime";
+}
+
+<div class='complexDateTime'>
+    <div class='container startDate'>
+        <input type="text" class='startDate' name='@startDateName' value='@Model.StartDate.ToShortDateString()' />
+    </div>
+    <div class='container startTime'>
+        <input type="text" class='startTime' name='@startTimeName' value='@Model.StartTime.ToShortTimeString()' />
+    </div>
+    <div style='margin: 2px 4px 0 0; float:left;'>to</div>
+    <div class='container endDate'>
+        <input type="text" class='endDate' name='@endDateName' value='@Model.EndDate.ToShortDateString()' />
+    </div>
+    <div class='container endTime'>
+        <input type="text" class='endTime' name='@endTimeName' value='@Model.EndTime.ToShortTimeString()' />
+    </div>
+</div>
+
+<script type="text/javascript" src='@Url.Content("~/scripts/jQuery.UI/jquery.ui.datepicker.js")'></script>
+<script type="text/javascript" src='@Url.Content("~/scripts/jQuery.Custom/LHA.ComplexDateTime.js")'></script>
+
+<script type="text/javascript">
+
+    $(function () {
+       $(".complexDateTime").complexDateTime();
+    });
+
+</script>

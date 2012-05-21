@@ -1,0 +1,45 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+@using LHASocialWork.Models.Shared;
+@{
+    var error = TempData["Error"] as ErrorModel;
+    var alert = TempData["Alert"] as AlertModel;
+    var message = TempData["Message"] as MessageModel;
+}
+@if (error != null || alert != null || message != null)
+{
+    <div class='systemMessages'>    
+        @if (error != null)
+        {
+            <div class='systemMessage errorMessage'>
+                @(error.Message) 
+                <a href='javascript:' class='systemMessageCloseButton'>X</a>
+            </div>
+        }
+
+        @if (alert != null)
+        {
+            <div class='systemMessage alertMessage'>
+                @(alert.Message)
+                <a href='javascript:' class='systemMessageCloseButton'>X</a>
+            </div>
+        }
+
+        @if (message != null)
+        {
+            <div class='systemMessage'>
+                @(message.Message)
+                <a href='javascript:' class='systemMessageCloseButton'>X</a>
+            </div>
+        }
+    </div>
+}
+
+<script type="text/javascript">
+    $(function () {
+        $(".systemMessage").each(function () {
+            $(this).find(".systemMessageCloseButton").click(function () {
+                $(this).parents(".systemMessage").first().hide('slow');
+            });
+        });
+    });
+</script>

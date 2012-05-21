@@ -1,0 +1,17 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventButtonModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+
+<div class='volunteerEventButton button' style='height:15px;margin: 10px 0px;float:left;'>
+    @using (Html.BeginForm("Volunteer", "Events", new { eventName = Model.EventName }))
+    {
+        <div style='display:none;' class='complexDateTime'>
+            <input value="@DateTime.Now.AddMonths(1).ToShortDateString()" type="text" class='startDate dateTime' name="StartDate" style='float:left;'/>          
+            <div style='float:left;margin:3px 5px;'> to </div>
+            <input value="@DateTime.Now.AddMonths(2).ToShortDateString()" type="text" class='endDate dateTime' name="EndDate" />
+            <input type="submit" value="" style="width:30px; height:21px; border:none;cursor:pointer; background-image:url('@Url.Content("~/Content/Images/go.gif")')" />                          
+        </div>
+        <a href='javascript:' class='volunteerButton'>Volunteer</a>
+    }
+</div>

@@ -1,0 +1,28 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Templates.PersonalInfo>
+
+@using System.Web.Mvc.Html
+@using System.Web.Mvc
+
+<div class="editor-label">
+	@Html.LabelFor(m => m.FirstName)
+</div>
+<div class="editor-field">
+	@Html.TextBoxFor(m => m.FirstName)
+	@Html.ValidationMessageFor(m => m.FirstName)
+</div>
+
+<div class="editor-label">
+	@Html.LabelFor(m => m.LastName)
+</div>
+<div class="editor-field">
+	@Html.TextBoxFor(m => m.LastName)
+	@Html.ValidationMessageFor(m => m.LastName)
+</div>
+
+<div class="editor-label">
+	@Html.LabelFor(m => m.PhoneNumber)
+</div>
+<div class="editor-field">
+	@Html.TextBoxFor(m => m.PhoneNumber)
+	@Html.ValidationMessageFor(m => m.PhoneNumber)
+</div>

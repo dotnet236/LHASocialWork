@@ -1,0 +1,13 @@
+﻿@inherits System.Web.Mvc.WebViewPage<long>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+
+<div class='button'>
+    @using (Html.BeginForm(new { action = "approvemember", controller = "events", eventName = ViewContext.RouteData.Values["eventName"] }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("Id", Model);
+        <input type="submit" value="Approve" />
+    }
+</div>       

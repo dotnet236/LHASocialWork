@@ -1,0 +1,20 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Templates.RichTextArea>
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+
+<textarea name='@Model.PropertyName' style='width:100%;' class='tinymce'>
+    @Model.PropertyValue.ToString()
+</textarea>
+
+<script type="text/javascript" src='@Url.Content("~/scripts/jQuery.TinyMCE/jquery.tinymce.js")'></script>
+<script type="text/javascript">
+    $(function () {
+        $("textarea.tinymce").tinymce({
+            theme: "advanced",
+            theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,fontselect,fontsizeselect,|,code",
+            theme_advanced_buttons2: "",
+            mode: 'textareas',
+            script_url: '@Url.Content("~/scripts/jQuery.TinyMCE/tiny_mce.js")'
+        });
+    });
+</script>

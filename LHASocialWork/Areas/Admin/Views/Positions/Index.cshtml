@@ -1,0 +1,26 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Areas.Admin.Models.Positions.PositionsModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+
+@{
+    View.Title = "Administration Manager - Positions";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class='gridContainer'>
+        <div class='gridTop'>
+            <div class='gridTitle'>Positions</div>
+            <div class='gridTopLinks'>@Html.ActionLink("Create Position", "CreatePosition")</div>
+        </div>
+        @Html.Grid(Model.Data).Columns(column => {
+                                                    column.For(m => Html.ActionLink(m.Name, "Position", new { id = m.Id })).Named("Name").DoNotEncode();
+                                                    column.For(m => m.SystemRole);
+                                                    column.For(m => m.AccountCount).Sortable(false).Named("User Count");
+                                                    column.For(m => Html.ActionLink("Add User", "CreateUserPosition", new { id = m.Id })).Named("").DoNotEncode().Sortable(false);
+        }).Sort(Model.Options).Empty("There have been no positions created.")
+    </div>
+</div>
+

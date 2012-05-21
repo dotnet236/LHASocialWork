@@ -1,0 +1,44 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+@using System.Web.Mvc.Html
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>@View.Title</title>
+
+    <link href="@Url.Content("~/Content/jQuery/jQueryUI.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Areas/Admin/Content/Admin.css")" rel="stylesheet" type="text/css" />
+    @RenderSection("style", required: false)
+
+    <script type="text/javascript" src="@Url.Content("~/scripts/jQuery/jquery-1.4.1.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/scripts/jQuery/jquery.validate.js")"></script>
+    <script type="text/javascript" src='@Url.Content("~/scripts/jQuery.UI/jquery.ui.core.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/scripts/jQuery.UI/jquery.ui.widget.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/scripts/Microsoft/MicrosoftAjax.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/scripts/Microsoft/MicrosoftMvcAjax.js")'></script>
+    <script type="text/javascript" src='@Url.Content("~/scripts/Microsoft/MicrosoftMvcValidation.js")'></script>
+    @RenderSection("script", required: false)
+</head>
+
+<body>
+    <div class='siteHeaderOutterContainer'>
+        @{Html.RenderPartial("SiteHeader");}
+    </div>
+    <div class='panels'>
+        <div class='leftOutterPanel'>
+            <div class='leftInnerPanel'>
+                @{Html.RenderPartial("AdminSideNavPartial");}
+            </div>            
+        </div>
+	    <div class="rightPanel">
+            <div>
+                @{Html.RenderPartial("SystemMessages");}
+            </div>
+		    @RenderBody()
+        </div>
+        <div class='clear'></div>
+    </div>
+</body>
+</html>
+

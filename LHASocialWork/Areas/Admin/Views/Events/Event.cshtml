@@ -1,0 +1,13 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventModel>
+
+@{
+    View.Title = "Administration Manager - Event '" + Model.Name + "'";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class='headerNavigationLinks'>
+@Html.ActionLink("Edit Event", "Edit", new { id = Model.Id })|@Html.ActionLink("Invite People", "Invite", new { id = Model.Id })
+</div>
+
+@{Html.RenderPartial("~/Views/Events/EventPartial.cshtml", Model);}

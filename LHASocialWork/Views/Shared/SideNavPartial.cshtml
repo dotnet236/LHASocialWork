@@ -1,0 +1,24 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventModel>
+@using System.Web.Mvc.Html
+@using System.Web.Mvc
+
+<div>
+    <div class="first">
+        @using (Html.BeginForm("Search", "System"))
+        {       
+            @Html.AntiForgeryToken();
+	        <h3>Search LHA</h3>
+            <div>
+                <input type="text" id="search" name="keywords" style='width:135px;' />
+	            <input type="image" value="Search" id="submit" src="@Url.Content("~/Content/Images/go.gif")" />
+            </div>
+	        <p><input type="checkbox" id="incdisc" name="incdisc"> include posts</p>
+        }
+    </div>
+</div>
+<div class='newMessagesContainer'>
+    <div>Messages:</div>
+    <div style='margin-left:10px;'>
+        @Html.ActionLink("1 New Message", "Index", "Messages")
+    </div>
+</div>

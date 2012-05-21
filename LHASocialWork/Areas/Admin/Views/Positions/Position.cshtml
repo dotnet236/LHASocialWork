@@ -1,0 +1,30 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Areas.Admin.Models.Positions.PositionViewModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using LHASocialWork.Core.HtmlHelpers;
+
+@{
+    View.Title = "Administration Manager - " + Model.Position.Name;
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class='gridContainer'>
+        <div class='gridTop'>
+            <div class='gridTitle'>Manage Position "@Model.Position.Name"</div>
+            <div class='gridTopLinks'>@Html.ActionLink("Add User", "CreateUserPosition", new { id = @Model.Position.Id })</div>
+        </div>
+        @Html.Grid(Model.Data).Columns(column => {
+                                                    column.For(m => m.Name).Sortable(false);
+                                                    column.For(m => m.Email).Sortable(false);
+                                                    column.For(m => m.PhoneNumber).Sortable(false);
+                                                    column.For(m => Html.ConfirmableActionLink("Remove", "                Delete this users position?", "DeleteUserPosition", new { id = m.Id })).Named("").DoNotEncode().Sortable(false);
+        }).Sort(Model.Options).Empty("There are currently no users with this position.")
+    </div>
+</div>
+
+@section script{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jQuery.Custom/LHA.ConfirmableActionLink.js")"></script>
+}

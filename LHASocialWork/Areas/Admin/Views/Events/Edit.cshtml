@@ -1,0 +1,71 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Areas.Admin.Models.Events.EditEventViewModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using LHASocialWork.Core.HtmlHelpers;
+
+@{
+    View.Title = "Administration Manager - Edit Event";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class='headerNavigationLinks'>
+    @Html.ActionLink("Back to Event", "Event", new { id = Model.Id })
+</div>
+
+@using (Html.BeginForm("Edit", "Events", new { }, FormMethod.Post, new { @class = "formContainer", enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true, "Event editing was unsuccessful. Please correct the errors and try again.")
+    @Html.AntiForgeryToken();
+                            
+    <h2>Create Event</h2>
+    @Html.HiddenFor(x => x.Id);
+    <div>
+        <h3>Description</h3>
+        <div class="subFormContainer">            
+            @Html.InlineFieldFor(m => m.Name)
+            @Html.InlineFieldFor(m => m.DateTime)
+            @Html.InlineFieldFor(m => m.Description)
+            @Html.InlineFieldFor(m => m.Creator)
+        </div>
+        <h3>Location</h3>
+        <div class="subFormContainer" >
+            <div class="showNextButton"></div>
+            <div style='display:none;'>
+                @Html.InlineFieldFor(m => m.Address.Street)
+                @Html.InlineFieldFor(m => m.Address.City)
+                @Html.InlineFieldFor(m => m.Address.State)
+                @Html.InlineFieldFor(m => m.Address.Province)
+                @Html.InlineFieldFor(m => m.Address.Zip)
+                @Html.InlineFieldFor(m => m.Address.Country)
+            </div>
+        </div>
+        <h3>Settings</h3>
+        <div class="subFormContainer" style="border:none;">
+            @Html.InlineFieldFor(m => m.Type)
+            @Html.InlineFieldFor(m => m.Occurrence)
+            @Html.InlineFieldFor(m => m.Privacy)
+            @Html.InlineFieldFor(m => m.Flyer)
+        </div>
+    </div>
+    <div style='padding-left:100px;padding-left: 120px;text-align:center;width:330px;'>
+        <input type="submit" value="Save" style='width:120px;' />
+    </div>
+}
+
+
+@section script{
+
+<script type="text/javascript">
+    $(function () {
+        var linkText = "Edit Address";
+        var link = $("<a href='javascript:' />").text(linkText);
+        link.click(function () {
+            $(this).parent().next().show();
+            $(this).parent().remove();
+        });
+        $(".showNextButton").append(link);
+    });
+</script>
+}

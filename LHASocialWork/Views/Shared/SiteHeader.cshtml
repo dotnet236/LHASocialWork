@@ -1,0 +1,41 @@
+﻿@inherits System.Web.Mvc.WebViewPage
+@using System.Web.Mvc.Html
+@using System.Web.Mvc
+
+<div class='topNavigationBar'>
+    <div class='siteHeaderInnerContainer'>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div>@Html.ActionLink("Log Out", "LogOut", new { controller = "accounts", area = "", returnUrl = Request.Url.AbsolutePath})</div>
+        }
+        else if(!Request.Url.AbsolutePath.Contains("Accounts/LogIn"))
+        {
+            using (Html.BeginForm("LogIn", "Accounts", new { area = "", returnUrl = Request.Url.AbsolutePath }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken();
+                <div>
+                    Email : @Html.TextBox("EmailAddress")
+                    Password : @Html.Password("Password")
+                    <div class='button' style='float:right; height:17px;color:#26628B;-moz-border-radius: 5px;margin-left:3px;'>
+                        <input id="submit" type="submit" value="Log On" />
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+    <ul id="navbar">
+      <li>@Html.ActionLink("Home", "index", new { controller = "home", area = "" })</li>
+      <li>@Html.RouteLink("Classes", "Events", new { action = "classes", controller = "events", area = "", eventName = "" })</li>
+      <li>@Html.RouteLink("Programs", "Events", new { action = "programs", controller = "events", area = "" })</li>
+      <li>@Html.ActionLink("services", "index", new { controller = "services", area = "" })</li>
+      <li>@Html.ActionLink("volunteer", "index", new { controller = "events", area = "" })</li>
+      @if (TempData["IsAdmin"] != null && (bool)TempData["IsAdmin"] == true)
+      {
+        <li>@Html.ActionLink("About", "About", new { controller = "Home", area = "" })</li>
+        <li class='last'>@Html.ActionLink("Admin", "Index", new { controller = "Accounts", area = "admin" })</li>
+      } else{
+        <li class='last'>@Html.ActionLink("About", "About", new { controller = "Home", area = "" })</li>
+      } 
+    </ul>
+</div>

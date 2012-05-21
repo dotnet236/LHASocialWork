@@ -1,0 +1,29 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventsModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+@using MvcContrib.UI.Grid;
+@using LHASocialWork.Core.Extensions;
+
+@{
+    View.Title = "Administration Manager - Events";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class='gridContainer'>
+        <div class='gridTop'>
+            <div class='gridTitle'>Events</div>
+            <div class='gridTopLinks'>@Html.ActionLink("Create Event", "Create")</div>
+        </div>
+        @Html.Grid(Model.Data).Columns(column => {
+                                                    column.For(m => Html.ActionLink(m.Name, "Event", new { id = m.Id })).Named("Name").DoNotEncode();
+                                                    column.For(m => m.StartDate.ToShortDateString()).Named("Start Date");
+                                                    column.For(m => m.StartTime.ToShortTimeString()).Named("Start Time");
+                                                    column.For(m => m.EndDate.ToShortDateString()).Named("End Date");
+                                                    column.For(m => m.EndTime.ToShortTimeString()).Named("End Time");
+                                                    column.For(m => m.Occurrence);
+                                                    column.For(m => m.Type);
+        }).Sort(Model.Options).Empty("There have been no events created.").Attributes(new Dictionary<string, object> { {"style", "width:666px"} })
+    </div>
+</div>

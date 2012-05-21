@@ -1,0 +1,8 @@
+﻿@inherits System.Web.Mvc.WebViewPage<LHASocialWork.Models.Event.EventButtonModel>
+
+@using System.Web.Mvc;
+@using System.Web.Mvc.Html;
+
+<div class='eventButton button' style='height: 15px;margin: 10px 7px;'>
+    @Html.RouteLink("Cancel Join Request", new { action = "canceljoinrequest", Controller = "events", area = "", eventName = Model.EventName })
+</div>
